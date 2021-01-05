@@ -1,4 +1,4 @@
-# Black_Jack
+# Blackjack
 
 <!-- A system to help you win the game -->
 
@@ -24,7 +24,11 @@ We use deep Q learning to compute the win rate of every possible movement, and s
 
 ## Implementation Process
 
-## Knowledge from Lecture
+First, we need to install all the environment, include TensorFlow, Keras, Pillow and many other packages.
+Second, we are going to train our model of poker recognition.
+Then, last part also the hardest part, we need to build the model to compute the recommend movement.
+
+<!-- ## Knowledge from Lecture -->
 
 ## Installation
 
