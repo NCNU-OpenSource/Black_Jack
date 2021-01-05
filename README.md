@@ -372,6 +372,7 @@ When a blue window jump out unexpectedly, with "Pending kernel update"
 #### Why
 
 It seems that packages ends with `dev` would need to change some settings of kernel, so the efforts would be deleted.
+After searching lots of articles, the broken of SD card is the main problem.
 
 #### Solution
 
