@@ -355,7 +355,7 @@ Then the TensorFlow has been installed successfully.
     python3 Object_detection_picamera.py
 ```
 
-## Usage
+<！-- ## Usage -->
 
 ## Trouble Shooting
 
