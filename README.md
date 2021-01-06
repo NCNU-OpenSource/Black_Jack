@@ -2,28 +2,6 @@
 
 ## A system to help you win the game
 
-- [Blackjack](#blackjack)
-  - [A system to help you win the game](#a-system-to-help-you-win-the-game)
-  - [Concept Development](#concept-development)
-  - [Implementation Resources](#implementation-resources)
-  - [Existing Library/Software](#existing-librarysoftware)
-  - [Implementation Process](#implementation-process)
-  - [Installation](#installation)
-    - [Install Camera of Raspberry pi](#install-camera-of-raspberry-pi)
-      - [Build Environments](#build-environments)
-      - [Something goes wrong here](#something-goes-wrong-here)
-      - [Solutions](#solutions)
-      - [Make](#make)
-      - [Image Recognition](#image-recognition)
-      - [Install XMing](#install-xming)
-      - [Continue](#continue)
-    - [TensorFlow & Keras](#tensorflow--keras)
-    - [Object Recognition](#object-recognition)
-    - [Telegram bot](#telegram-bot)
-    - [Bluetooth Settings](#bluetooth-settings)
-    - [Text to Speech](#text-to-speech)
-    - [GitHub](#github)
-
 ---
 
 ## Concept Development
@@ -272,7 +250,7 @@ Then the TensorFlow has been installed successfully.
     http://YourIP:8080/?action=stream
 ```
 
-#### Image Recognition
+### Image Recognition
 <!-- #### 影像辨識 -->
 
 - update pi
@@ -307,7 +285,7 @@ Then the TensorFlow has been installed successfully.
 
 ![](https://i.imgur.com/i13v7QC.png)
 
-- install OpenCV
+### install OpenCV
 <!-- - 安裝 OpenCV -->
 
 ```shell=
@@ -385,13 +363,13 @@ Then the TensorFlow has been installed successfully.
     wget https://raw.githubusercontent.com/EdjeElectronics/TensorFlow-Object-Detection-on-the-Raspberry-Pi/master/Object_detection_picamera.py
 ```
 
-#### Install XMing
+### Install XMing
 
 Now, we need to install Xming first. We need to install this because ssh could not see the jump out window.
 
 Follow all the steps in this [site](https://ogre0403.gitbooks.io/nchc-braavos-user-guide/content/Q_and_A/linux/x_win.html), then we could continue.
 
-#### Continue
+### Continue
 
 ```shell=
     python3 Object_detection_picamera.py
