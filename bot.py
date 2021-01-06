@@ -3,8 +3,11 @@ import os
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 
+import audioOutput
 
 # Welcome users
+
+
 def hello(update, context):
     update.message.reply_text(f'hello, {update.message.from_user.first_name}')
 
@@ -12,13 +15,23 @@ def hello(update, context):
 # New Game
 def start(update, context):
     update.message.reply_text('New Round!')
-    os.system('python3 audioOutput.py')
+    print('new')
+    os.system('python audioOutput.py')
+
+
+# Speak what you want
+def speak(update, context):
+    audioOutput.speak(
+        f'{update.message.from_user.first_name} 說: {update.message.text[6:]}')
 
 
 # Commands
 def help(update, context):
     update.message.reply_text(
-        'Blackjack的指令集~~~\n /help 指令集\n /dealer 莊家的牌\n /me 玩家的牌')
+        'Blackjack的指令集~~~\n /help 指令集\n /start 開始新的一輪')
+
+    # update.message.reply_text(
+    #     'Blackjack的指令集~~~\n /help 指令集\n /dealer 莊家的牌\n /me 玩家的牌')
 
 
 # Repeat what user say
@@ -59,6 +72,7 @@ def main():
     add_command('hello', hello)
     add_command('help', help)
     add_command('echo', echo)
+    add_command('speak', speak)
 
     for i in command:
         updater.dispatcher.add_handler(

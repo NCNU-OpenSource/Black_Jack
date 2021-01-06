@@ -2,7 +2,6 @@
 
 ## A system to help you win the game
 
-
 ---
 
 ## Concept Development
@@ -38,11 +37,14 @@ Our Devices:
 
 <!-- - Docker -->
 - TensorFlow & Keras
+- Cuda (Only when using GPU to training model)
 - Python3
   - OpenCV
   - Pillow
   - pyttsx3
   - python-telegram-bot
+- XMing
+- Putty
 
 ---
 
@@ -524,6 +526,26 @@ The setting of the picture quality is too high and the dectect too frequently.
 
 Lower the resolution of the picture, and reduce the frequency of recognition. To achieve this, we need to change the code in model.
 
+Our resolution: 640 x 480
+
+### Exception when multi-card recognition
+
+#### What it this
+
+When scanning multi-cards, the program could recognize successfully, but the data we get is always wrong.
+
+![multi-card](https://i.imgur.com/0sS7a02.png)
+
+#### How to deal with it
+
+After several hours of code tracking, finally found the source. After changed the code of the model, turned it into the way we want.
+
+- `/tensorflow1/models/research/object_detection/Object_detection_picamera.py`:
+    ![Object_detection_picamera.py](https://i.imgur.com/qKIGZpn.png)
+
+- `/tensorflow1/models/research/object_detection/utils/visualization_utils.py`:
+    ![visualization_utils.py](https://i.imgur.com/svWqoyK.png)
+
 ---
 
 ## Job Assignment
@@ -565,6 +587,7 @@ Lower the resolution of the picture, and reduce the frequency of recognition. To
 - [影像辨識教學](https://www.youtube.com/watch?v=npZ-8Nj1YwY&ab_channel=EdjeElectronics)
 - [XMing](https://ogre0403.gitbooks.io/nchc-braavos-user-guide/content/Q_and_A/linux/x_win.html)
 - [Object Detection Tutorial Video](https://www.youtube.com/watch?v=npZ-8Nj1YwY&ab_channel=EdjeElectronics)
+- [PiCamera](https://picamera.readthedocs.io/en/release-1.10/api_camera.html)
 
 ### Telegram bot
 
