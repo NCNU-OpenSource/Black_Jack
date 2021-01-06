@@ -27,8 +27,10 @@ def start(update, context):
 # My turn
 def mine(update, context):
     print('new')
-    start_new_round('mine')
     update.message.reply_text('Scaning your cards plz.')
+    suggest = start_new_round('mine')
+    update.message.reply_text(f'You should {suggest}.')
+    
 
 
 # Speak what you want
@@ -88,7 +90,7 @@ def start_new_round(method):
         cur_state = env.get_obs()
         action = np.argmax(model.predict(
             np.array(cur_state).reshape(-1, *np.array(cur_state).shape))[0])
-        suggest(action)
+        return suggest(action)
 
 
 # Change suggestion to the speech
@@ -100,7 +102,8 @@ def suggest(action):
         speech = 'hit'
     else:
         speech = 'double'
-    speak(speech)
+    audioOutput.speak(speech)
+    return speech
 
 
 status = 1
