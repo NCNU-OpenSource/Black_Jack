@@ -2,7 +2,28 @@
 
 ## A system to help you win the game
 
-[Toc]
+- [Blackjack](#blackjack)
+  - [A system to help you win the game](#a-system-to-help-you-win-the-game)
+  - [Concept Development](#concept-development)
+  - [Implementation Resources](#implementation-resources)
+  - [Existing Library/Software](#existing-librarysoftware)
+  - [Implementation Process](#implementation-process)
+  - [Installation](#installation)
+    - [Install TensorFlow](#install-tensorflow)
+      - [Download source code of TensorFlow](#download-source-code-of-tensorflow)
+      - [Start construct from the source code](#start-construct-from-the-source-code)
+    - [Install Camera of Raspberry pi](#install-camera-of-raspberry-pi)
+      - [Build Environments](#build-environments)
+      - [Something goes wrong here](#something-goes-wrong-here)
+      - [Solutions](#solutions)
+      - [Make](#make)
+      - [Image Recognition](#image-recognition)
+      - [Solution](#solution)
+  - [Job Assignment](#job-assignment)
+  - [Future Outlook](#future-outlook)
+  - [References](#references)
+
+<!-- [Toc] -->
 
 ## Concept Development
 
