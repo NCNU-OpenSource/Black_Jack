@@ -25,7 +25,7 @@ def speak(update, context):
         f'{update.message.from_user.first_name} 說: {update.message.text[6:]}')
 
 
-# Commands
+# Show Commands
 def help(update, context):
     update.message.reply_text(
         'Blackjack的指令集~~~\n /help 指令集\n /start 開始新的一輪')
@@ -38,7 +38,7 @@ def help(update, context):
 def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(
-        f'{update.message.from_user.first_name} 說: {update.message.text}')
+        f'{update.message.from_user.first_name} 說: {update.message.text[5:]}')
 
 
 # Bluetooth setting
