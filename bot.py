@@ -1,9 +1,15 @@
-# import telepot
 import os
+import time
+import json
+import telepot
+import numpy as np
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 
+# import main
 import audioOutput
+from bj_env import PokerAgent
+from keras.engine.saving import model_from_json
 
 # Welcome users
 
@@ -14,17 +20,20 @@ def hello(update, context):
 
 # New Game
 def start(update, context):
+    start_new_round('start')
     update.message.reply_text('New Round!\n\nShow me the dealer\'s card.')
-    # TODO: Start a new game.
 
 
 # My turn
 def mine(update, context):
+    print('new')
+    start_new_round('mine')
     update.message.reply_text('Scaning your cards plz.')
-    # TODO: Recognize user's cards
 
 
 # Speak what you want
+
+
 def speak(update, context):
     audioOutput.speak(
         f'{update.message.from_user.first_name} 說: {update.message.text[6:]}')
@@ -57,21 +66,67 @@ def add_command(name, function):
     command.append({'name': name, 'function': function})
 
 
+def start_new_round(method):
+    ambiguous()
+    global env
+    card_file = open('card.txt', 'r')
+    cards = card_file.read().split()
+    card_file.close()
+    if method == 'start':
+        while not cards[0]:
+            card_file = open('card.txt', 'r')
+            cards = card_file.read().split()
+            card_file.close()
+        env.reset()
+        env.dealer.append(card_value[int(cards[0])])
+    if method == 'mine':
+        while len(cards) < 2:
+            card_file = open('card.txt', 'r')
+            cards = card_file.read().split()
+            card_file.close()
+        for i in cards:
+            env.player.append(card_value[int(i)])
+        cur_state = env.get_obs()
+        action = np.argmax(model.predict(
+            np.array(cur_state).reshape(-1, *np.array(cur_state).shape))[0])
+        suggest(action)
+
+
+# Change suggestion to the speech
+def suggest(action):
+    speech = ''
+    if action == 0:
+        speech = 'stand'
+    elif action == 1:
+        speech = 'hit'
+    else:
+        speech = 'double'
+    speak(speech)
+
+
+status = 1
 command = []
+card_value = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+
+
+# Load the reinforcement learning
+env = PokerAgent()
+
+with open('model_in_json.json', 'r') as f:
+    model_json = json.load(f)
+model = model_from_json(model_json)
+model.load_weights('bj_model_500K.fdh5')
 
 
 def main():
 
-    # 執行這個程式，注意 'YOUR TOKEN HERE' 的地方請填入前面得到的 Token
     myFile = open('token.txt')
     token = myFile.read().strip()
     updater = Updater(token, use_context=True)
-
-    # bot = telepot.Bot(token)
-
-    dispatcher = updater.dispatcher
-
-    dispatcher.add_handler(CommandHandler("start", start))
+    bot = telepot.Bot(token)
+    # dispatcher = updater.dispatcher
+    # dispatcher.add_handler(CommandHandler("start", start))
+    # updater.dispatcher.add_handler(MessageHandler(Filters.text, echo))
 
     add_command('hello', hello)
     add_command('new', start)
@@ -84,11 +139,11 @@ def main():
         updater.dispatcher.add_handler(
             CommandHandler(i['name'], i['function']))
 
-    # updater.dispatcher.add_handler(MessageHandler(Filters.text, echo))
-
     updater.start_polling()
+
     updater.idle()
 
 
 if __name__ == '__main__':
     main()
+    # mine()
