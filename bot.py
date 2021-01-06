@@ -67,7 +67,6 @@ def add_command(name, function):
 
 
 def start_new_round(method):
-    ambiguous()
     global env
     card_file = open('card.txt', 'r')
     cards = card_file.read().split()
