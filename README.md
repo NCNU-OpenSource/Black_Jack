@@ -28,9 +28,11 @@ Our Devices:
     <img src="https://i.imgur.com/AgqVVvs.png" width="400">
 
 - camera
-    ![camera](https://i.imgur.com/npNDhmG.png)
+    <img src="https://i.imgur.com/npNDhmG.png" width="200">
+    <!-- ![camera](https://i.imgur.com/npNDhmG.png) -->
 - button
-    ![Button](https://i.imgur.com/ZlkIwAm.png)
+    <img src="https://i.imgur.com/ZlkIwAm.png" width="200">
+    <!-- ![Button](https://i.imgur.com/ZlkIwAm.png) -->
 
 ---
 
