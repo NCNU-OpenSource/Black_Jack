@@ -27,12 +27,12 @@ def start(update, context):
 
 # My turn
 def mine(update, context):
-    print('new')
+    global card_value
     update.message.reply_text('Scaning your cards plz.')
     cards, suggest = start_new_round('mine')
     points = ''
     for i in cards:
-        points += ' ' + str(i)
+        points += ' ' + str(card_value[i])
     update.message.reply_text(f'Your Card is {points}.\nYou should "{suggest}".')
     
 
@@ -95,7 +95,7 @@ def start_new_round(method):
         cur_state = env.get_obs()
         action = np.argmax(model.predict(
             np.array(cur_state).reshape(-1, *np.array(cur_state).shape))[0])
-        return card_value, suggest(action)
+        return cards, suggest(action)
 
 
 # Change suggestion to the speech
