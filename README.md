@@ -2,6 +2,28 @@
 
 ## A system to help you win the game
 
+- [Blackjack](#blackjack)
+  - [A system to help you win the game](#a-system-to-help-you-win-the-game)
+  - [Concept Development](#concept-development)
+  - [Implementation Resources](#implementation-resources)
+  - [Existing Library/Software](#existing-librarysoftware)
+  - [Implementation Process](#implementation-process)
+  - [Installation](#installation)
+    - [Install Camera of Raspberry pi](#install-camera-of-raspberry-pi)
+      - [Build Environments](#build-environments)
+      - [Something goes wrong here](#something-goes-wrong-here)
+      - [Solutions](#solutions)
+      - [Make](#make)
+      - [Image Recognition](#image-recognition)
+      - [Install XMing](#install-xming)
+      - [Continue](#continue)
+    - [TensorFlow & Keras](#tensorflow--keras)
+    - [Object Recognition](#object-recognition)
+    - [Telegram bot](#telegram-bot)
+    - [Bluetooth Settings](#bluetooth-settings)
+    - [Text to Speech](#text-to-speech)
+    - [GitHub](#github)
+
 ---
 
 ## Concept Development
