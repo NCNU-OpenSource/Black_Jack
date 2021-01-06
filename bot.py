@@ -20,16 +20,20 @@ def hello(update, context):
 
 # New Game
 def start(update, context):
-    start_new_round('start')
     update.message.reply_text('New Round!\n\nShow me the dealer\'s card.')
+    point = start_new_round('start')
+    update.message.reply_text(f'Dealer\'s card is {point}.')
 
 
 # My turn
 def mine(update, context):
     print('new')
     update.message.reply_text('Scaning your cards plz.')
-    suggest = start_new_round('mine')
-    update.message.reply_text(f'You should {suggest}.')
+    cards, suggest = start_new_round('mine')
+    points = ''
+    for i in cards:
+        points += ' ' + i
+    update.message.reply_text(f'Your Card is {points}.\nYou should "{suggest}".')
     
 
 
@@ -80,6 +84,7 @@ def start_new_round(method):
             card_file.close()
         env.reset()
         env.dealer.append(card_value[int(cards[0])])
+        return card_value[int(cards[0])]
     if method == 'mine':
         while len(cards) < 2:
             card_file = open('card.txt', 'r')
@@ -90,7 +95,7 @@ def start_new_round(method):
         cur_state = env.get_obs()
         action = np.argmax(model.predict(
             np.array(cur_state).reshape(-1, *np.array(cur_state).shape))[0])
-        return suggest(action)
+        return card_value, suggest(action)
 
 
 # Change suggestion to the speech
