@@ -32,7 +32,7 @@ def mine(update, context):
     cards, suggest = start_new_round('mine')
     points = ''
     for i in cards:
-        points += ' ' + i
+        points += ' ' + str(i)
     update.message.reply_text(f'Your Card is {points}.\nYou should "{suggest}".')
     
 
