@@ -19,23 +19,28 @@ We use deep Q learning to compute the win rate of every possible movement, and s
 ## Existing Library/Software
 
 - Docker
-- TensorFlow
-- Keras
+- TensorFlow & Keras
+- Python3
+  - OpenCV
+  - Pillow
+  - pyttsx3
 
 ## Implementation Process
 
-## Knowledge from Lecture
+First, we need to install some packages and libraries
+
+<!-- ## Knowledge from Lecture -->
 
 ## Installation
 
 Due to raspberry pi doesn't support the version of TensorFlow we use, we need to install docker first.
 
-### Install h5py
+<!-- ### Install h5py
 
 ```=shell
     sudo apt-get install libhdf5-dev
-    sudo apt-get install libhdf5-serial-de
-```
+    sudo apt-get install libhdf5-serial-de 
+```-->
 
 ### Install pillow
 
@@ -47,6 +52,8 @@ Due to raspberry pi doesn't support the version of TensorFlow we use, we need to
     sudo apt-get install liblcms1-dev -y
     sudo apt-get install libopenjp2-7 -y
     sudo apt-get install libtiff5 -y
+    
+    pip3 install pillow
 ```
 
 ### Install pyttsx3 (Python Text to Speech)
