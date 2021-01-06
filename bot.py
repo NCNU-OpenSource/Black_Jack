@@ -1,4 +1,5 @@
 # import telepot
+import os
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 
@@ -11,6 +12,7 @@ def hello(update, context):
 # New Game
 def start(update, context):
     update.message.reply_text('New Round!')
+    os.system('python3 audioOutput.py')
 
 
 # Commands

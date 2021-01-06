@@ -18,18 +18,24 @@
       - [Solutions](#solutions)
       - [Make](#make)
       - [Image Recognition](#image-recognition)
-      - [Solution](#solution)
-  - [Job Assignment](#job-assignment)
-  - [Future Outlook](#future-outlook)
-  - [References](#references)
+    - [Object Recognition](#object-recognition)
+    - [TensorFlow & Keras](#tensorflow--keras)
+    - [Telegram Bot](#telegram-bot)
+    - [Bluetooth Settings](#bluetooth-settings)
+    - [Text to Speech](#text-to-speech)
+    - [GitHub Table of contents](#github-table-of-contents)
 
 <!-- [Toc] -->
+
+---
 
 ## Concept Development
 
 Lots of people play blackjack with relatives during Chinese New Year, some even gamble much money away.  
 Now, Chinese New Year is around the corner, in order to keep money in our pocket, we gonna develope a "cheat box" to help us raise the win rate.
 In this "cheat box", we use camera to capture the point of cards, then through some compute, would give users some feedback.
+
+---
 
 ## Implementation Resources
 
@@ -39,14 +45,19 @@ We use raspberry pi 3 as our main device, as for the camera, here's the [link](h
 There are two techniques in our project, one is object recognition, another is machine learning.
 We use deep Q learning to compute the win rate of every possible movement, and send the recommend movement to users.
 
+---
+
 ## Existing Library/Software
 
-- Docker
+<!-- - Docker -->
 - TensorFlow & Keras
 - Python3
   - OpenCV
   - Pillow
   - pyttsx3
+  - python-telegram-bot
+
+---
 
 ## Implementation Process
 
@@ -57,9 +68,11 @@ Last but not least, we would let the result be spoken out to the user.
 
 <!-- ## Knowledge from Lecture -->
 
+---
+
 ## Installation
 
-Due to raspberry pi doesn't support the version of TensorFlow we use, we need to install docker first.
+<!-- Due to raspberry pi doesn't support the version of TensorFlow we use, we need to install docker first. -->
 
 <!-- ### Install h5py
 
@@ -406,13 +419,68 @@ Then the TensorFlow has been installed successfully.
     engine.runAndWait()
 ``` -->
 
+### Install Telegram bot packages
+
+```=
+> pip3 install python-telegram-bot
+```
+
+---
+
 ## Usage
 
 To use our system, just need some simple steps.
 
-First, make sure all the device is working correctly, including Raspberry pi, camera, and speaker or headphone.
+### Check hardware device
 
-Then, we have to use the camera the 
+First, make sure all the device is working correctly, including Raspberry pi, camera, and output device.
+
+Output device could be wired or wireless. To be able to connect with bluetooth device, there're something  need to deal with.
+
+Here's the bluetooth settings:
+
+1. Install bluetooth package (Only first time)
+
+    ```=
+    > sudo bluetoothctl
+    ```
+
+2. Search device and pair
+
+    ```=
+    > scan on
+    > pair <MAC address of your device>
+    ```
+
+3. Trust and Connect
+
+    ```=
+    > trust <MAC address of your device>
+    > connect <MAC address of your device>
+    ```
+
+4. Disconnect
+
+    ```=
+    > disconnect <MAC address of your device>
+    ```
+
+### Start using
+
+Then, we have to use the camera to recognize the poker cards. Here we have two method to manipulate our "cheat box".
+
+One is using button to control, another is using command in Telegram Bot.
+
+#### Physical Button
+
+#### Telegram Bot
+
+In Telegram Bot, there are some command could be used:
+
+`/help`: See all the commands.
+`/start`: Start a new round.
+
+---
 
 ## Trouble Shooting
 
@@ -435,7 +503,7 @@ The kernel should be updated in normal situation, but it didn't work.
 To determine which version we use, use the below command.
 
 ```=shell
-$ uname -a
+> uname -a
 ```
 
 After searching lots of articles, the broken of SD card is the main problem.
@@ -443,34 +511,61 @@ After searching lots of articles, the broken of SD card is the main problem.
 #### Solution
 
 Unfortunately, there's no a better way to solve this problem.
-Please refill Raspberry pi using another SD card and start over.
+Please refill Raspberry pi with another SD card and start over.
+
+---
 
 ## Job Assignment
 
 - Object Recognition: 陳靖、林詩涵
 - Text to Voice: 李盛廉
 - Model training: 謝博丞
-- Speaker Device: 林宥均
+- Environment Setup: 謝博丞
+- Telegram Bot: 林宥均
 - Compile Data, Docs: 林宥均
 - Slides: *Everyone*
 
+---
+
 ## Future Outlook
 
-1. Combine current function with communication applications, like Telegram, Messenger or Line...
+1. Reduce the size of whole device, make it harder to be noticed when using our device.
 
-2. Reduce the size of whole device, make it harder to be noticed when using our device.
+2. Having more interaction by using Telegram Bot.
+
+3. Increase the accuracy of the result, like add other players' cards as considerations.
+
+---
 
 ## References
 
-- [GitHub ToC generator](https://ecotrust-canada.github.io/markdown-toc/)
-
-- [Docker Official docs](https://docs.docker.com/engine/install/debian/#install-using-the-convenience-script)
-- [TensorFlow installation](https://www.tensorflow.org/install/source_rpi?hl=zh-tw)
-- [TensorFlow & Keras environments](https://docs.floydhub.com/guides/environments/)
-- [pyttsx3 on pypi](https://pypi.org/project/pyttsx3/)
+<!-- - [Docker Official docs](https://docs.docker.com/engine/install/debian/#install-using-the-convenience-script) -->
+### Object Recognition
 
 - [Poker TensorFlow Object Detection API](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10)
 - [即時影像辨識環境建置](https://xianghu.pixnet.net/blog/post/155977403-raspberrypi%26webcamera)
 - [影像辨識教學](https://www.youtube.com/watch?v=npZ-8Nj1YwY&ab_channel=EdjeElectronics)
 
+### TensorFlow & Keras
+
+- [TensorFlow installation](https://www.tensorflow.org/install/source_rpi?hl=zh-tw)
+- [TensorFlow & Keras environments](https://docs.floydhub.com/guides/environments/)
 - https://stackoverflow.com/questions/57614436/od-graph-def-tf-graphdef-attributeerror-module-tensorflow-has-no-attribut
+
+### Telegram Bot
+
+- https://matters.news/@MeowMeow/python-telegram-bot-%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8-%E4%B8%80-bafyreiec3ydpasl5s336uiaoeqwmhuh7c7bjnmkxkcf4qnalxhbiz7pdre
+- https://python-telegram-bot.org/
+- https://hackmd.io/@truckski/HkgaMUc24?type=view
+
+### Bluetooth Settings
+
+- https://me1237guy.pixnet.net/blog/post/66140562
+
+### Text to Speech
+
+- [pyttsx3 on pypi](https://pypi.org/project/pyttsx3/)
+
+### GitHub Table of contents
+
+- [GitHub ToC generator](https://ecotrust-canada.github.io/markdown-toc/)
