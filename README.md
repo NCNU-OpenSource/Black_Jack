@@ -2,30 +2,6 @@
 
 ## A system to help you win the game
 
-- [Blackjack](#blackjack)
-  - [A system to help you win the game](#a-system-to-help-you-win-the-game)
-  - [Concept Development](#concept-development)
-  - [Implementation Resources](#implementation-resources)
-  - [Existing Library/Software](#existing-librarysoftware)
-  - [Implementation Process](#implementation-process)
-  - [Installation](#installation)
-    - [Install TensorFlow](#install-tensorflow)
-      - [Download source code of TensorFlow](#download-source-code-of-tensorflow)
-      - [Start construct from the source code](#start-construct-from-the-source-code)
-    - [Install Camera of Raspberry pi](#install-camera-of-raspberry-pi)
-      - [Build Environments](#build-environments)
-      - [Something goes wrong here](#something-goes-wrong-here)
-      - [Solutions](#solutions)
-      - [Make](#make)
-      - [Image Recognition](#image-recognition)
-    - [Object Recognition](#object-recognition)
-    - [TensorFlow & Keras](#tensorflow--keras)
-    - [Telegram Bot](#telegram-bot)
-    - [Bluetooth Settings](#bluetooth-settings)
-    - [Text to Speech](#text-to-speech)
-    - [GitHub Table of contents](#github-table-of-contents)
-
-<!-- [Toc] -->
 
 ---
 
@@ -44,6 +20,17 @@ We use raspberry pi 3 as our main device, as for the camera, here's the [link](h
 
 There are two techniques in our project, one is object recognition, another is machine learning.
 We use deep Q learning to compute the win rate of every possible movement, and send the recommend movement to users.
+
+Our Devices:
+
+- Raspberry pi 3
+
+    <img src="https://i.imgur.com/AgqVVvs.png" width="400">
+
+- camera
+    ![camera](https://i.imgur.com/npNDhmG.png)
+- button
+    ![Button](https://i.imgur.com/ZlkIwAm.png)
 
 ---
 
@@ -128,7 +115,7 @@ If you want to manage docker as a non-root user, see [here](https://docs.docker.
         sudo usermod -aG docker $USER
     ``` -->
 
-### Install TensorFlow
+<!-- <!-- ### Install TensorFlow
 
 #### Download source code of TensorFlow
 
@@ -143,7 +130,7 @@ The default storage is in the `master` branch
 
 ```=
     $ git checkout master
-```
+``` -->
 
 #### Start construct from the source code
 
@@ -374,6 +361,14 @@ Then the TensorFlow has been installed successfully.
     wget https://raw.githubusercontent.com/EdjeElectronics/TensorFlow-Object-Detection-on-the-Raspberry-Pi/master/Object_detection_picamera.py
 ```
 
+#### Install XMing
+
+Now, we need to install Xming first. We need to install this because ssh could not see the jump out window.
+
+Follow all the steps in this [site](https://ogre0403.gitbooks.io/nchc-braavos-user-guide/content/Q_and_A/linux/x_win.html), then we could continue.
+
+#### Continue
+
 ```shell=
     python3 Object_detection_picamera.py
 ```
@@ -513,14 +508,31 @@ After searching lots of articles, the broken of SD card is the main problem.
 Unfortunately, there's no a better way to solve this problem.
 Please refill Raspberry pi with another SD card and start over.
 
+### Low Performance of Poker Recognition
+
+#### What
+
+The FPS is very very low and is's very difficult to detect the point. Even if it works, it spent much time working.
+
+![bad recognition](https://i.imgur.com/Uzt3jtu.jpg)
+
+#### Why?
+
+The setting of the picture quality is too high and the dectect too frequently.
+
+#### How to Solve
+
+Lower the resolution of the picture, and reduce the frequency of recognition. To achieve this, we need to change the code in model.
+
 ---
 
 ## Job Assignment
 
-- Object Recognition: 陳靖、林詩涵
-- Text to Voice: 李盛廉
-- Model training: 謝博丞
 - Environment Setup: 謝博丞
+- Object Recognition: 陳靖、林詩涵、謝博丞
+- Model training: 謝博丞
+- Bluetooth Settings: 李盛廉、謝博丞
+- Text to Voice: 李盛廉
 - Telegram Bot: 林宥均
 - Compile Data, Docs: 林宥均
 - Slides: *Everyone*
@@ -540,32 +552,35 @@ Please refill Raspberry pi with another SD card and start over.
 ## References
 
 <!-- - [Docker Official docs](https://docs.docker.com/engine/install/debian/#install-using-the-convenience-script) -->
+### TensorFlow & Keras
+
+- [TensorFlow installation](https://www.tensorflow.org/install/source_rpi?hl=zh-tw)
+- [TensorFlow & Keras environments](https://docs.floydhub.com/guides/environments/)
+- [GraphDef](https://stackoverflow.com/questions/57614436/od-graph-def-tf-graphdef-attributeerror-module-tensorflow-has-no-attribut)
+
 ### Object Recognition
 
 - [Poker TensorFlow Object Detection API](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10)
 - [即時影像辨識環境建置](https://xianghu.pixnet.net/blog/post/155977403-raspberrypi%26webcamera)
 - [影像辨識教學](https://www.youtube.com/watch?v=npZ-8Nj1YwY&ab_channel=EdjeElectronics)
+- [XMing](https://ogre0403.gitbooks.io/nchc-braavos-user-guide/content/Q_and_A/linux/x_win.html)
+- [Object Detection Tutorial Video](https://www.youtube.com/watch?v=npZ-8Nj1YwY&ab_channel=EdjeElectronics)
 
-### TensorFlow & Keras
+### Telegram bot
 
-- [TensorFlow installation](https://www.tensorflow.org/install/source_rpi?hl=zh-tw)
-- [TensorFlow & Keras environments](https://docs.floydhub.com/guides/environments/)
-- https://stackoverflow.com/questions/57614436/od-graph-def-tf-graphdef-attributeerror-module-tensorflow-has-no-attribut
-
-### Telegram Bot
-
-- https://matters.news/@MeowMeow/python-telegram-bot-%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8-%E4%B8%80-bafyreiec3ydpasl5s336uiaoeqwmhuh7c7bjnmkxkcf4qnalxhbiz7pdre
-- https://python-telegram-bot.org/
-- https://hackmd.io/@truckski/HkgaMUc24?type=view
+- [Basic](https://hackmd.io/@truckski/HkgaMUc24?type=view)
+- [Python Telegram Bot Org.](https://python-telegram-bot.org/)
+- [Telegram.ext](https://matters.news/@MeowMeow/python-telegram-bot-%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8-%E4%B8%80-bafyreiec3ydpasl5s336uiaoeqwmhuh7c7bjnmkxkcf4qnalxhbiz7pdre)
 
 ### Bluetooth Settings
 
-- https://me1237guy.pixnet.net/blog/post/66140562
+- [Bluetooth settings](https://me1237guy.pixnet.net/blog/post/66140562)
 
 ### Text to Speech
 
 - [pyttsx3 on pypi](https://pypi.org/project/pyttsx3/)
 
-### GitHub Table of contents
+### GitHub
 
 - [GitHub ToC generator](https://ecotrust-canada.github.io/markdown-toc/)
+- [Markdown Image size](https://stackoverflow.com/questions/14675913/changing-image-size-in-markdown)
