@@ -23,7 +23,12 @@ def help(update, context):
 def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(
-        f'{update.message.from_user.first_name} says: {update.message.text}')
+        f'{update.message.from_user.first_name} 說: {update.message.text}')
+
+
+# Bluetooth setting
+def bluetooth():
+    pass
 
 
 # Add commend
