@@ -1,15 +1,7 @@
-import telepot
+# import telepot
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 
-
-# Enable logging
-# logging.basicConfig(
-#     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
-# )
-
-
-# logger = logging.getLogger(__name__)
 
 # Welcome users
 def hello(update, context):
@@ -20,23 +12,21 @@ def hello(update, context):
 def start(update, context):
     update.message.reply_text('New Round!')
 
+
 # Commands
 def help(update, context):
     update.message.reply_text(
         'Blackjack的指令集~~~\n /help 指令集\n /dealer 莊家的牌\n /me 玩家的牌')
 
 
+# Repeat what user say
 def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(
         f'{update.message.from_user.first_name} says: {update.message.text}')
 
 
-def test(bot, update, context):
-    print(f'test')
-    # .reply_text('hi')
-
-# Add commend 
+# Add commend
 def add_command(name, function):
     global command
     command.append({'name': name, 'function': function})
