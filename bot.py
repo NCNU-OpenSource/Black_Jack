@@ -14,9 +14,14 @@ def hello(update, context):
 
 # New Game
 def start(update, context):
-    update.message.reply_text('New Round!')
-    print('new')
-    os.system('python audioOutput.py')
+    update.message.reply_text('New Round!\n\nShow me the dealer\'s card.')
+    # TODO: Start a new game.
+
+
+# My turn
+def mine(update, context):
+    update.message.reply_text('Scaning your cards plz.')
+    # TODO: Recognize user's cards
 
 
 # Speak what you want
@@ -68,8 +73,9 @@ def main():
 
     dispatcher.add_handler(CommandHandler("start", start))
 
-    add_command('start', start)
     add_command('hello', hello)
+    add_command('new', start)
+    add_command('me', mine)
     add_command('help', help)
     add_command('echo', echo)
     add_command('speak', speak)
