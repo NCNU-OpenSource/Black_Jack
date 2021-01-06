@@ -24,14 +24,12 @@ We use deep Q learning to compute the win rate of every possible movement, and s
 Our Devices:
 
 - Raspberry pi 3
-
-    <img src="https://i.imgur.com/AgqVVvs.png" width="400">
-
+    - <img src="https://i.imgur.com/AgqVVvs.png" width="400">
 - camera
-    <img src="https://i.imgur.com/npNDhmG.png" width="200">
+    - <img src="https://i.imgur.com/npNDhmG.png" width="200">
     <!-- ![camera](https://i.imgur.com/npNDhmG.png) -->
 - button
-    <img src="https://i.imgur.com/ZlkIwAm.png" width="200">
+    - <img src="https://i.imgur.com/ZlkIwAm.png" width="200">
     <!-- ![Button](https://i.imgur.com/ZlkIwAm.png) -->
 
 ---
