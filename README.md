@@ -1,6 +1,8 @@
-# Black_Jack
+# Blackjack
 
-<!-- A system to help you win the game -->
+## A system to help you win the game
+
+[Toc]
 
 ## Concept Development
 
@@ -27,7 +29,10 @@ We use deep Q learning to compute the win rate of every possible movement, and s
 
 ## Implementation Process
 
-First, we need to install some packages and libraries
+First, we need to install all the environment, include TensorFlow, Keras, Pillow and many other packages.
+Second, we are going to train our model of poker recognition.
+Then, main part also the hardest part, we need to build the model to compute the recommend movement.
+Last but not least, we would let the result be spoken out to the user.
 
 <!-- ## Knowledge from Lecture -->
 
@@ -62,7 +67,7 @@ Due to raspberry pi doesn't support the version of TensorFlow we use, we need to
     pip3 install pyttsx3
 ```
 
-### Install Docker
+<!-- ### Install Docker
 
 Unfortunately for Raspbian, installing using the repository is not yet supported. We must instead use the ***convenience script***.
 
@@ -73,7 +78,7 @@ Unfortunately for Raspbian, installing using the repository is not yet supported
     <output truncated>
 ```
 
-If you want to manage docker as a non-root user, see [here](https://docs.docker.com/engine/install/linux-postinstall/).
+If you want to manage docker as a non-root user, see [here](https://docs.docker.com/engine/install/linux-postinstall/). -->
 
 <!-- After installation, here are some steps we need to walk through:
 
@@ -127,19 +132,17 @@ Then the TensorFlow has been installed successfully.
 
 <!-- ### 即時影像辨識 -->
 
-### Install Camera of Raspberry pi 安裝樹莓派相機
+### Install Camera of Raspberry pi
 
 <!-- :::success -->
 
-- [Poker TensorFlow Object Detection API](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10)
-- [即時影像辨識環境建置](https://xianghu.pixnet.net/blog/post/155977403-raspberrypi%26webcamera)
-- [影像辨識教學](https://www.youtube.com/watch?v=npZ-8Nj1YwY&ab_channel=EdjeElectronics)
 <!-- ::: -->
 
-#### 環境建置
+#### Build Environments
+<!-- #### 環境建置 -->
 
 - update apt
-- 更新安裝軟體
+<!-- - 更新安裝軟體 -->
 
 ```shell=
     sudo apt-get update
@@ -147,48 +150,50 @@ Then the TensorFlow has been installed successfully.
 ```
 
 - install relative package
-- 安裝依賴包
+<!-- - 安裝依賴包 -->
 
 ```shell=
     sudo apt-get install subversion libjpeg62-turbo-dev imagemagick
 ```
 
 - download source code
-- 下載原始碼
+<!-- - 下載原始碼 -->
 
 ```shell=
     svn co https://svn.code.sf.net/p/mjpg-streamer/code/
 ```
 
 - switch to the path of makefile
-- 切換到有 makefile 的路徑下
+<!-- - 切換到有 makefile 的路徑下 -->
 
 ```shell=
     cd code/mjpg-streamer
 ```
 
 - execute makefile
-- 執行 makefile
+<!-- - 執行 makefile -->
 
 ```shell=
     make
 ```
 
-#### 這邊會報錯
+#### Something goes wrong here
+<!-- #### 這邊會報錯 -->
 
 ![這邊會報錯](https://i.imgur.com/PdrA7kf.png)
 
-#### 解決方案
+#### Solutions
+<!-- #### 解決方案 -->
 
 - edit `util.c` which is in the same directory as makefile
-- 編輯和 makefile 同個資料夾中的 `utils.c`
+<!-- - 編輯和 makefile 同個資料夾中的 `utils.c` -->
 
 ```shell=
     sudo vim utils.c
 ```
 
-- commit this two line
-- 註解掉以下兩行
+- comment this two line
+<!-- - 註解掉以下兩行 -->
 
 ```shell=
     #include <linux/stat.h>
@@ -204,28 +209,29 @@ Then the TensorFlow has been installed successfully.
 ```
 
 - drive mjpeg-streamer
-- 驅動 mjpg-streamer
+<!-- - 驅動 mjpg-streamer -->
 
 ```shell=
     ./mjpg_streamer -i "./input_uvc.so -y" -o "./output_http.so -w ./www" 
 ```
 
 - wait a minute, if the below image is seen, which means works successfully
-- 這邊要等他跑一下，看到以下畫面代表成功
+<!-- - 這邊要等他跑一下，看到以下畫面代表成功 -->
 
 ![](https://i.imgur.com/EidXj7j.png)
 
 - Go to this link to see the instant image (Insert the ip of pi)
-- 輸入以下網址來看到即時影像(IP填樹莓派的)
+<!-- - 輸入以下網址來看到即時影像(IP填樹莓派的) -->
 
 ```shell=
     http://YourIP:8080/?action=stream
 ```
 
-#### 影像辨識
+#### Image Recognition
+<!-- #### 影像辨識 -->
 
 - update pi
-- 更新 pi
+<!-- - 更新 pi -->
 
 ```shell=
     sudo apt-get update
@@ -233,7 +239,7 @@ Then the TensorFlow has been installed successfully.
 ```
 
 - install TensorFlow
-- 安裝 TensorFlow
+<!-- - 安裝 TensorFlow -->
 
 ```shell=
     mkdir tf
@@ -257,7 +263,7 @@ Then the TensorFlow has been installed successfully.
 ![](https://i.imgur.com/i13v7QC.png)
 
 - install OpenCV
-- 安裝 OpenCV
+<!-- - 安裝 OpenCV -->
 
 ```shell=
     # sudo apt-get install libjpeg-dev libjasper-dev libpng12-dev
@@ -268,7 +274,7 @@ Then the TensorFlow has been installed successfully.
 ```
 
 - Compile and install Protobuf
-- 編譯並安裝 Protobuf
+<!-- - 編譯並安裝 Protobuf -->
 
 ```shell=
     sudo apt-get install autoconf automake libtool curl 
@@ -294,7 +300,7 @@ Then the TensorFlow has been installed successfully.
 ```
 
 - Setup TensorFlow Directory structure 
-- 設定 TensorFlow 目錄結構
+<!-- - 設定 TensorFlow 目錄結構 -->
 
 ```shell=
     mkdir tensorflow1
@@ -308,7 +314,7 @@ Then the TensorFlow has been installed successfully.
 ```
 
 - echo after close terminal
-- 關掉終端機後，echo
+<!-- - 關掉終端機後，echo -->
 
 ```shell=
     echo $PYTHONPATH
@@ -362,35 +368,70 @@ Then the TensorFlow has been installed successfully.
     python3 Object_detection_picamera.py
 ```
 
+<!-- ## Text to Audio -->
+
+<!-- ```=Python
+    import pyttsx3
+    input = "hello test "
+    engine = pyttsx3.init()
+    voices = engine.getProperty('voices')
+    rate = 150
+    print(rate)
+    engine.setProperty('rate', rate)
+    volume = engine.getProperty('volume')
+    print(volume)
+    engine.setProperty('volume', volume)
+    engine.say(input)
+    engine.runAndWait()
+``` -->
+
 ## Usage
+
+To use our system, just need some simple steps.
+
+First, make sure all the device is working correctly, including Raspberry pi, camera, and speaker or headphone.
+
+Then, we have to use the camera the 
 
 ## Trouble Shooting
 
 ### Unexpected recovery
 
-#### Situation
+#### What happened
 
 When reboot the pi, many package would be deleted, and data in directories be deleted unexpected, seemed to be recovered to older versions as before.
 
 #### When
 
-When a blue window jump out unexpectedly, with "Pending kernel update"
+When a blue the window jump out unexpectedly, after reboot, the kernel version is still the same.
+
+![Pending Kernel Upgrade](https://i.imgur.com/pxHuPYH.png)
 
 #### Why
 
-It seems that packages ends with `dev` would need to change some settings of kernel, so the efforts would be deleted.
+The kernel should be updated in normal situation, but it didn't work.
+
+To determine which version we use, use the below command.
+
+```=shell
+$ uname -a
+```
+
+After searching lots of articles, the broken of SD card is the main problem.
 
 #### Solution
 
-Install all these kind of packages at the same time at first, maybe this works, we hope.
+Unfortunately, there's no a better way to solve this problem.
+Please refill Raspberry pi using another SD card and start over.
 
 ## Job Assignment
 
 - Object Recognition: 陳靖、林詩涵
 - Text to Voice: 李盛廉
 - Model training: 謝博丞
+- Speaker Device: 林宥均
 - Compile Data, Docs: 林宥均
-- Slides: Everyone
+- Slides: *Everyone*
 
 ## Future Outlook
 
@@ -400,7 +441,11 @@ Install all these kind of packages at the same time at first, maybe this works, 
 
 ## References
 
-- Docker Official docs: https://docs.docker.com/engine/install/debian/#install-using-the-convenience-script
-- TensorFlow installation: https://www.tensorflow.org/install/source_rpi?hl=zh-tw
-- TensorFlow & Keras environments: https://docs.floydhub.com/guides/environments/
-- pyttsx3 on pypi: https://pypi.org/project/pyttsx3/
+- [Docker Official docs](https://docs.docker.com/engine/install/debian/#install-using-the-convenience-script)
+- [TensorFlow installation](https://www.tensorflow.org/install/source_rpi?hl=zh-tw)
+- [TensorFlow & Keras environments](https://docs.floydhub.com/guides/environments/)
+- [pyttsx3 on pypi](https://pypi.org/project/pyttsx3/)
+
+- [Poker TensorFlow Object Detection API](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10)
+- [即時影像辨識環境建置](https://xianghu.pixnet.net/blog/post/155977403-raspberrypi%26webcamera)
+- [影像辨識教學](https://www.youtube.com/watch?v=npZ-8Nj1YwY&ab_channel=EdjeElectronics)
