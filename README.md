@@ -3,51 +3,7 @@
 ## A system to help you win the game
 
 
-- [Blackjack](#blackjack)
-  * [A system to help you win the game](#a-system-to-help-you-win-the-game)
-  * [Concept Development](#concept-development)
-  * [Implementation Resources](#implementation-resources)
-  * [Existing Library/Software](#existing-library-software)
-  * [Implementation Process](#implementation-process)
-  * [Installation](#installation)
-    + [Install pyttsx3 (Python Text to Speech)](#install-pyttsx3--python-text-to-speech-)
-      - [Download source code of TensorFlow](#download-source-code-of-tensorflow)
-    + [Install Camera of Raspberry pi](#install-camera-of-raspberry-pi)
-      - [Build Environments](#build-environments)
-      - [Something goes wrong here](#something-goes-wrong-here)
-      - [Solutions](#solutions)
-      - [Make](#make)
-    + [Image Recognition](#image-recognition)
-    + [install OpenCV](#install-opencv)
-    + [Install XMing](#install-xming)
-    + [Continue](#continue)
-  * [Usage](#usage)
-    + [Check hardware device](#check-hardware-device)
-    + [Start using](#start-using)
-      - [Physical Button](#physical-button)
-      - [Telegram Bot](#telegram-bot)
-  * [Trouble Shooting](#trouble-shooting)
-    + [Unexpected recovery](#unexpected-recovery)
-      - [What happened](#what-happened)
-      - [When](#when)
-      - [Why](#why)
-      - [Solution](#solution)
-    + [Low Performance of Poker Recognition](#low-performance-of-poker-recognition)
-      - [What](#what)
-      - [Why?](#why-)
-      - [How to Solve](#how-to-solve)
-    + [Exception when multi-card recognition](#exception-when-multi-card-recognition)
-      - [What it this](#what-it-this)
-      - [How to deal with it](#how-to-deal-with-it)
-  * [Job Assignment](#job-assignment)
-  * [Future Outlook](#future-outlook)
-  * [References](#references)
-    + [TensorFlow & Keras](#tensorflow---keras)
-    + [Object Recognition](#object-recognition)
-    + [Telegram bot](#telegram-bot)
-    + [Bluetooth Settings](#bluetooth-settings)
-    + [Text to Speech](#text-to-speech)
-    + [GitHub](#github)
+
 
 ---
 
@@ -517,12 +473,19 @@ One is using button to control, another is using command in Telegram Bot.
 
 #### Physical Button
 
+Press the button to control.
+
+First press: start a new round. 
+Second: Start a new round.
+Third: Scan user's cards.
+
 #### Telegram Bot
 
 In Telegram Bot, there are some command could be used:
 
 `/help`: See all the commands.
-`/start`: Start a new round.
+`/new`: Start a new round.
+`/me`: Scan user's cards.
 
 ---
 
