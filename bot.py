@@ -22,7 +22,7 @@ def hello(update, context):
 def start(update, context):
     update.message.reply_text('New Round!\n\nShow me the dealer\'s card.')
     point = start_new_round('start')
-    update.message.reply_text(f'Dealer\'s card is {point}.')
+    update.message.reply_text(f'Dealer\'s card is {point}.\n接著用 /me 來掃描自己的牌')
 
 
 # My turn
@@ -48,7 +48,7 @@ def speak(update, context):
 # Show Commands
 def help(update, context):
     update.message.reply_text(
-        'Blackjack的指令集~~~\n /help 指令集\n /start 開始新的一輪')
+        'Blackjack的指令集~~~\n /help 指令集\n /new 開始新的一輪\n/me 掃描自己的牌')
 
     # update.message.reply_text(
     #     'Blackjack的指令集~~~\n /help 指令集\n /dealer 莊家的牌\n /me 玩家的牌')
