@@ -41,6 +41,7 @@
   * [Job Assignment](#job-assignment)
   * [Future Outlook](#future-outlook)
   * [References](#references)
+    + [Deep Q learning tutorial](#tensorflow---keras)
     + [TensorFlow & Keras](#tensorflow---keras)
     + [Object Recognition](#object-recognition)
     + [Telegram bot](#telegram-bot)
@@ -633,6 +634,9 @@ After several hours of code tracking, finally found the source. After changed th
 ---
 
 ## References
+
+### Reinforcement Learning
+- [Deep Q learning tutorial](https://pythonprogramming.net/q-learning-reinforcement-learning-python-tutorial/)
 
 <!-- - [Docker Official docs](https://docs.docker.com/engine/install/debian/#install-using-the-convenience-script) -->
 ### TensorFlow & Keras
