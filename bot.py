@@ -86,6 +86,7 @@ def start_new_round(method):
         env.dealer.append(card_value[int(cards[0])])
         return card_value[int(cards[0])]
     if method == 'mine':
+        env.player=[]
         while len(cards) < 2:
             card_file = open('card.txt', 'r')
             cards = card_file.read().split()
