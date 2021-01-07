@@ -312,12 +312,10 @@ Then the TensorFlow has been installed successfully.
 <!-- - 安裝 TensorFlow -->
 
 ```shell=
-    mkdir tf
-    cd tf
-    wget ...
-    sudo pip3 install tensorflow-1.8.0-cp35-none-linux_armv71.whl
-    sudo apt-get install libatlas-base-dev
-    sudo pip3 install pillow lxml jupyter matplotlib cython
+    sudo apt update
+    sudo apt install python3-dev python3-pip python3-venv
+    sudo apt install libatlas-base-dev
+    pip3 install https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.4.0/tensorflow-2.4.0-cp37-none-linux_armv71.whl
 ```
 
 ![](https://i.imgur.com/6XswhLw.png)
@@ -379,7 +377,7 @@ Then the TensorFlow has been installed successfully.
 ```
 
 ```shell=
-    sudo nano ~/.bashrc
+    sudo vim ~/.bashrc
     export PYTHONPATH=$PYTHONPATH:/home/pi/tensorflow1/models/research:/home/pi/tensorflow1/models/research/slim
 ```
 
@@ -398,12 +396,12 @@ Then the TensorFlow has been installed successfully.
 ```
 
 ```shell=
-    cd tensorflow1/models/research
+    cd ..
     protoc object_detection/protos/*.proto --python_out=.
 ```
 
 ```shell=
-    cd tensorflow1/models/research/object_detection/
+    cd object_detection/
 ```
 
 ```shell=
@@ -435,7 +433,7 @@ Follow all the steps in this [site](https://ogre0403.gitbooks.io/nchc-braavos-us
 ```
 
 ```shell=
-    sudo idle3 Object_detection_picamera.py
+    sudo vim Object_detection_picamera.py
 
     MODEL_NAME = 'card_model'
     PATH_TOLABELS = os.path.join(CWD_PATH, 'data', 'card_labelmap.pbtxt')
@@ -444,6 +442,15 @@ Follow all the steps in this [site](https://ogre0403.gitbooks.io/nchc-braavos-us
 
 ```shell=
     python3 Object_detection_picamera.py
+```
+
+### Note:
+
+if your tensorflow version <2
+```shell:
+    tf.compat.v1.GraphDef()   # -> instead of tf.GraphDef()
+    tf.compat.v2.io.gfile.GFile()   # -> instead of tf.gfile.GFile()
+    tf.compat.v1.Session()   # -> instead of tf.Session()
 ```
 
 <!-- ## Text to Audio -->
