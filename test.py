@@ -110,7 +110,7 @@ if camera_type == 'picamera':
     for frame1 in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True):
 
         t1 = cv2.getTickCount()
-        
+
         # Acquire frame and expand frame dimensions to have shape: [1, None, None, 3]
         # i.e. a single-column array, where each item in the column has the pixel RGB value
         frame = np.copy(frame1.array)
@@ -133,9 +133,15 @@ if camera_type == 'picamera':
             use_normalized_coordinates=True,
             line_thickness=8,
             min_score_thresh=0.40)
+
         print(cards[0])
+        card_file=open("card.txt","w")
+        for i in cards[0]:
+            card_file.write(str(i-1) + " ")
+        card_file.close()
         cv2.putText(frame,"FPS: {0:.2f}".format(frame_rate_calc),(30,50),font,1,(255,255,0),2,cv2.LINE_AA)
 
+        
         # All the results have been drawn on the frame, so it's time to display it.
         cv2.imshow('Object detector', frame)
 
@@ -151,4 +157,3 @@ if camera_type == 'picamera':
 
     camera.close()
 cv2.destroyAllWindows()
-
